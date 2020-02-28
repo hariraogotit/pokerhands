@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface FiveCardsValidator {
 
-    List<FiveCard> validate(List<String> fiveCards);
+    List<FiveCard> validateIfTheyAreInPairs(List<String> fiveCards);
 }

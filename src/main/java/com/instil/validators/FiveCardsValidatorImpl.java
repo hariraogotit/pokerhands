@@ -16,11 +16,8 @@ import static com.instil.utils.PokerHandAppUtil.convertToCard;
  * Created by Hari Rao on 26/02/20.
  */
 public class FiveCardsValidatorImpl implements FiveCardsValidator {
-    @Override
-    public List<FiveCard> validate(List<String> rawFiveCards){
-        return validateIfTheyAreInPairs(rawFiveCards);
-    }
 
+    @Override
     public List<FiveCard> validateIfTheyAreInPairs(List<String> rawFiveCards){
         Iterator<String> iter = rawFiveCards.iterator();
         while(iter.hasNext()){

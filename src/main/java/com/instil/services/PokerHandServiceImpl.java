@@ -9,7 +9,6 @@ import org.apache.commons.collections4.map.HashedMap;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
-import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -36,64 +35,72 @@ public class PokerHandServiceImpl implements PokerHandService {
         Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank = new HashedMap<>();
         HandRankService handRankService = new HandRankServiceImpl();
         for(FiveCard fiveCard : fiveCards){
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isFullHouse(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FULL_HOUSE);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isFourOFAKind(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FOUR_OF_A_KIND);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isTwoPairs(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.TWO_PAIRS);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isThreeOfAKind(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.THREE_OF_A_KIND);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isOnePair(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ONE_PAIR);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isStraightFlush(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT_FLUSH);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isRoyalFlush(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ROYAL_FLUSH);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isFlush(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FLUSH);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isStraight(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT);
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isHighCard(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.HIGH_CARD);
-                }
-            }
+            processFiveCards(mappedFiveCardWithHandRank, handRankService, fiveCard);
         }
         return mappedFiveCardWithHandRank;
+    }
+
+    private void processFiveCards(Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isFullHouse(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FULL_HOUSE);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isFourOFAKind(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FOUR_OF_A_KIND);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isTwoPairs(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.TWO_PAIRS);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isThreeOfAKind(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.THREE_OF_A_KIND);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isOnePair(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ONE_PAIR);
+            }
+        }
+        processMoreFiveCards(mappedFiveCardWithHandRank, handRankService, fiveCard);
+    }
+
+    private void processMoreFiveCards(Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isStraightFlush(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT_FLUSH);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isRoyalFlush(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ROYAL_FLUSH);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isFlush(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FLUSH);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isStraight(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT);
+            }
+        }
+        if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+            if(handRankService.isHighCard(fiveCard)){
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.HIGH_CARD);
+            }
+        }
     }
 
     private List<FiveCard> validate(FiveCardsValidator fiveCardsValidator, List<String> rawFiveCards) {
         List<FiveCard> fiveCards = Collections.emptyList();
         if(CollectionUtils.isNotEmpty(rawFiveCards)){
-            fiveCards = fiveCardsValidator.validate(rawFiveCards);
+            fiveCards = fiveCardsValidator.validateIfTheyAreInPairs(rawFiveCards);
         }
         return fiveCards;
     }

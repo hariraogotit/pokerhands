@@ -119,4 +119,14 @@ public class PokerHandAppUtil {
 
     }
 
+    public static FiveCard buildFiveCard(Card cardOne, Card cardTwo, Card cardThree, Card cardFour, Card cardFive) {
+        return new FiveCardBuilder()
+                .setCardOne(cardOne)
+                .setCardTwo(cardTwo)
+                .setCardThree(cardThree)
+                .setCardFour(cardFour)
+                .setCardFive(cardFive)
+                .build();
+    }
+
 }
