@@ -59,4 +59,8 @@ public class FiveCard {
         this.cardFive = cardFive;
     }
 
+    @Override
+    public String toString() {
+        return cardOne + "\t" + cardTwo + "\t" + cardThree + "\t" + cardFour + "\t" + cardFive;
+    }
 }

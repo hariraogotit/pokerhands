@@ -25,7 +25,7 @@ public class FiveCardsValidatorImpl implements FiveCardsValidator {
         while(iter.hasNext()){
             String[] fiveCardPairs = iter.next().split(" ");
             for(String tuple: fiveCardPairs){
-                if(tuple.length() !=2){
+                if(tuple.length() !=2 && tuple.length()!=3){
                     iter.remove();
                 }
             }
@@ -47,6 +47,12 @@ public class FiveCardsValidatorImpl implements FiveCardsValidator {
     }
 
     private Card convertToCard(String rawCard) {
+        if(rawCard.length() > 2){
+            return new CardBuilder()
+                    .setName(String.valueOf(rawCard.charAt(0)) + String.valueOf(rawCard.charAt(1)))
+                    .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(2))))
+                    .build();
+        }
         return new CardBuilder()
                             .setName(String.valueOf(rawCard.charAt(0)))
                             .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(1))))

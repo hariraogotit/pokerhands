@@ -10,6 +10,6 @@ public class LoadPokerApp {
 
     public static void main(String[] args) {
         PokerHandService pokerHandService = new PokerHandServiceImpl();
-        pokerHandService.processPokerHand("/home/shyamali/pokerhands/src/main/resources/input-five-cards.txt");
+        System.out.println(pokerHandService.processPokerHand("/home/shyamali/pokerhands/src/main/resources/input-five-cards.txt"));
     }
 }
