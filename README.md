@@ -22,7 +22,7 @@
     2.2 Create a directory called input.<br/>
     2.3 Create a file something like input-five-cards.txt with the input. Refer the below for format<br/>
     2.3 Run :- java -jar poker-hands-1.0-SNAPSHOT.jar  input/input-five-cards.txt<br/>
-3. To check the log navigate to pokerhands/target/log
+3. To check the output navigate to pokerhands/target/log
 
 ## Example input file :- space between cards-suits pair
 10C 9H 8D 7S 6C<br/>
