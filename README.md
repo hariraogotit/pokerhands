@@ -8,7 +8,7 @@
 3. After validation PokerHandServiceImpl.java determines hand rank by delegating to HandRankServiceImpl.java<br/>
 
 ## Improvements that I can think of now
-1. <div class="text-red"> Currently the APP considers "A" as greater than "K". Further coding needs to make it consider "A" as 1</div><BR>
+1. <div class="text-red mb-2"> Currently the App considers "A" as greater than "K". Further coding needs to make it consider "A" as 1</div><BR>
 2. More validations like validate the Card and Suit
 3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative
 4. A highlevel class diagram
