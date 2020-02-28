@@ -1,9 +1,19 @@
-##PokerHands
+
+
+#PokerHands
 
 ## Highlevel overview
 1. LoadPokerApp.java reads the input file. Then delegates the processing of poker cards to PokerHandServiceImpl.java<br/>
 2. PokerHandServiceImpl.java delegates validation processing to FiveCardsValidatorImpl.java <br/>
 3. After validation PokerHandServiceImpl.java determines hand rank by delegating to HandRankServiceImpl.java<br/>
+
+##Improvements that I can think of now
+1. <div class="text-red"> Currently the APP considers "A" as greater than "K". Further coding needs to make it consider "A" as 1</div><BR>
+2. More validations like validate the Card and Suit
+3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative
+4. A highlevel class diagram
+5. More unit tests although I think the main core logics are tested.
+6. Add more loggings
 
 ## How to run the jar
 1. Run mvn clean install.
@@ -38,10 +48,3 @@ KC QC 10C 8C 6C<br/>
 2020-02-28 10:47:02 INFO  LoadPokerApp:27 - 10H	11H	12H	13H	14H=>Royal Flush<br/>
 2020-02-28 10:47:02 INFO  LoadPokerApp:27 - 6C	8C	10C	12C	13C=>Flush
 
-##Improvements that I can think of now
-1. <div class="text-red"> Currently the APP considers "A" as greater than "K". Further coding needs to make it consider "A" as 1</div><BR>
-2. More validations like validate the Card and Suit
-3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative
-4. A highlevel class diagram
-5. More unit tests although I think the main core logics are tested.
-6. Add more loggings
