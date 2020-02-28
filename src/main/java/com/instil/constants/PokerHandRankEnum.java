@@ -13,7 +13,7 @@ public enum PokerHandRankEnum {
     FLUSH("Flush"),
     FULL_HOUSE("Full House"),
     FOUR_OF_A_KIND("Four Of A Kind"),
-    STRAIGHT_FLUSH("Straight_Flush"),
+    STRAIGHT_FLUSH("Straight Flush"),
     ROYAL_FLUSH("Royal Flush");
 
     private String value;
