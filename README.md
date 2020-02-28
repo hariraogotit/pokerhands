@@ -1,13 +1,13 @@
 
 
-#PokerHands
+# PokerHands
 
 ## Highlevel overview
 1. LoadPokerApp.java reads the input file. Then delegates the processing of poker cards to PokerHandServiceImpl.java<br/>
 2. PokerHandServiceImpl.java delegates validation processing to FiveCardsValidatorImpl.java <br/>
 3. After validation PokerHandServiceImpl.java determines hand rank by delegating to HandRankServiceImpl.java<br/>
 
-##Improvements that I can think of now
+## Improvements that I can think of now
 1. <div class="text-red"> Currently the APP considers "A" as greater than "K". Further coding needs to make it consider "A" as 1</div><BR>
 2. More validations like validate the Card and Suit
 3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative
