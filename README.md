@@ -1,4 +1,4 @@
-#Poker Hands
+#PokerHands
 
 ## How to run the jar
 1. Run mvn clean install.
@@ -21,7 +21,7 @@ AH AD AS AC 3S<br/>
 8S 8C 8D AC AH<br/>
 KC QC 10C 8C 6C<br/>
 
-## Sample Output from the log
+## Sample output from the log
 2020-02-28 10:47:02 INFO  LoadPokerApp:27 - KS	KH	8D	8H	4S=>Two Pair<br/>
 2020-02-28 10:47:02 INFO  LoadPokerApp:27 - 6H	7H	8H	9H	10H=>Straight Flush<br/>
 2020-02-28 10:47:02 INFO  LoadPokerApp:27 - 2S	3C	5D	7S	13D=>High Card<br/>
