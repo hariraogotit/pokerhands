@@ -31,7 +31,9 @@ public class HandRankServiceImpl implements HandRankService {
         if(isAllSameSuit(noOfIdenticalSuitsCounter)){
             replaceRoyalsToNumberValue(fiveCard);
             sortFiveCard(fiveCard);
-            isStraightFlush = areTheCardsInSequentialOrder(fiveCard);
+            if(!areTheseMayBeRoyalFlushCards(fiveCard)) {
+                isStraightFlush = areTheCardsInSequentialOrder(fiveCard);
+            }
         }
         return isStraightFlush;
     }
@@ -58,12 +60,9 @@ public class HandRankServiceImpl implements HandRankService {
     @Override
     public boolean isStraight(FiveCard fiveCard) {
         boolean isStraight = false;
-        Map<String, Integer> noOfIdenticalSuitsCounter = getNoOfIdenticalSuitsCounter(fiveCard);
-        if(isAllDifferentSuit(noOfIdenticalSuitsCounter)){
-            replaceRoyalsToNumberValue(fiveCard);
-            sortFiveCard(fiveCard);
-            isStraight = areTheCardsInSequentialOrder(fiveCard);
-        }
+        replaceRoyalsToNumberValue(fiveCard);
+        sortFiveCard(fiveCard);
+        isStraight = areTheCardsInSequentialOrder(fiveCard);
         return isStraight;
     }
 
@@ -91,15 +90,13 @@ public class HandRankServiceImpl implements HandRankService {
         return onePair;
     }
 
+
     @Override
     public boolean isHighCard(FiveCard fiveCard) {
-        boolean isHighCard = false;
-        Map<String, Integer> noOfIdenticalSuitsCounter = getNoOfIdenticalSuitsCounter(fiveCard);
-        if(isAllDifferentSuit(noOfIdenticalSuitsCounter)){
-            replaceRoyalsToNumberValue(fiveCard);
-            sortFiveCard(fiveCard);
-            isHighCard = areTheCardsInSequentialOrder(fiveCard);
-        }
-        return isHighCard;
+        boolean isNotHighCard = false;
+        replaceRoyalsToNumberValue(fiveCard);
+        sortFiveCard(fiveCard);
+        isNotHighCard = areTheCardsInSequentialOrder(fiveCard);
+        return !isNotHighCard;
     }
 }

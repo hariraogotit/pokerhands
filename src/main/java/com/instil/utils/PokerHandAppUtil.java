@@ -35,10 +35,10 @@ public class PokerHandAppUtil {
         cards.add(fiveCard.getCardFive());
         Collections.sort(cards);
         fiveCard.setCardOne(cards.get(0));
-        fiveCard.setCardOne(cards.get(1));
-        fiveCard.setCardOne(cards.get(2));
-        fiveCard.setCardOne(cards.get(3));
-        fiveCard.setCardOne(cards.get(4));
+        fiveCard.setCardTwo(cards.get(1));
+        fiveCard.setCardThree(cards.get(2));
+        fiveCard.setCardFour(cards.get(3));
+        fiveCard.setCardFive(cards.get(4));
     }
 
     public static boolean areTheseMayBeRoyalFlushCards(FiveCard fiveCard){
@@ -103,7 +103,4 @@ public class PokerHandAppUtil {
         return  isTheNumberOfPairFound(noOfIdenticalSuitsCounter, 5);
     }
 
-    public static boolean isAllDifferentSuit(Map<String, Integer> noOfIdenticalSuitsCounter){
-        return  isTwoPairFound(noOfIdenticalSuitsCounter, 1,5);
-    }
 }

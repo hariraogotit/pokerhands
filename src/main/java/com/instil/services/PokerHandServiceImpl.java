@@ -61,11 +61,6 @@ public class PokerHandServiceImpl implements PokerHandService {
                 }
             }
             if(mappedFiveCardWithHandRank.get(fiveCard)==null){
-                if(handRankService.isStraight(fiveCard)){
-                    mappedFiveCardWithHandRank.put(fiveCard, "Straight");
-                }
-            }
-            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
                 if(handRankService.isStraightFlush(fiveCard)){
                     mappedFiveCardWithHandRank.put(fiveCard, "Straight Flush");
                 }
@@ -73,6 +68,16 @@ public class PokerHandServiceImpl implements PokerHandService {
             if(mappedFiveCardWithHandRank.get(fiveCard)==null){
                 if(handRankService.isRoyalFlush(fiveCard)){
                     mappedFiveCardWithHandRank.put(fiveCard, "Royal Flush");
+                }
+            }
+            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+                if(handRankService.isFlush(fiveCard)){
+                    mappedFiveCardWithHandRank.put(fiveCard, "Flush");
+                }
+            }
+            if(mappedFiveCardWithHandRank.get(fiveCard)==null){
+                if(handRankService.isStraight(fiveCard)){
+                    mappedFiveCardWithHandRank.put(fiveCard, "Straight");
                 }
             }
             if(mappedFiveCardWithHandRank.get(fiveCard)==null){
