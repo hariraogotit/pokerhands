@@ -15,6 +15,7 @@ each Rank can be in a separate class and iterate over all the ranks.
 4. A highlevel class diagram
 5. More unit tests although I think the main core logics are tested.
 6. Add more loggings
+7. Have never played poker so had to watch some videos although the ask is not a complete poker game.
 
 ## How to run the jar
 1. Run mvn clean install.
