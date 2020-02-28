@@ -1,6 +1,6 @@
 package com.instil.main;
 
-import com.instil.constants.PokerHandEnum;
+import com.instil.constants.PokerHandRankEnum;
 import com.instil.models.FiveCard;
 import com.instil.services.PokerHandService;
 import com.instil.services.PokerHandServiceImpl;
@@ -21,7 +21,7 @@ public class LoadPokerApp {
             logger.error("Please provide a input file in input directory like input/input-five-cards.txt");
         }else {
             PokerHandService pokerHandService = new PokerHandServiceImpl();
-            Map<FiveCard, PokerHandEnum> fiveCardPokerHandMap =
+            Map<FiveCard, PokerHandRankEnum> fiveCardPokerHandMap =
                     pokerHandService.processPokerHand(args[0]);
             fiveCardPokerHandMap.entrySet()
                     .forEach(fiveCardStringEntry -> {

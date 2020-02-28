@@ -1,6 +1,6 @@
 package com.instil.services;
 
-import com.instil.constants.PokerHandEnum;
+import com.instil.constants.PokerHandRankEnum;
 import com.instil.models.FiveCard;
 
 import java.util.Map;
@@ -10,5 +10,5 @@ import java.util.Map;
  */
 public interface PokerHandService {
 
-    Map<FiveCard, PokerHandEnum> processPokerHand(String fileName);
+    Map<FiveCard, PokerHandRankEnum> processPokerHand(String fileName);
 }

@@ -3,7 +3,7 @@ package com.instil.constants;
 /**
  * Created by Hari Rao on 28/02/20.
  */
-public enum PokerHandEnum {
+public enum PokerHandRankEnum {
 
     HIGH_CARD("High Card"),
     ONE_PAIR("One Pair"),
@@ -18,7 +18,7 @@ public enum PokerHandEnum {
 
     private String value;
 
-    PokerHandEnum(String value){
+    PokerHandRankEnum(String value){
         this.value = value;
     }
 

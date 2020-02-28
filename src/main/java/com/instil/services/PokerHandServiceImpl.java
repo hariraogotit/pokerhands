@@ -1,6 +1,6 @@
 package com.instil.services;
 
-import com.instil.constants.PokerHandEnum;
+import com.instil.constants.PokerHandRankEnum;
 import com.instil.models.FiveCard;
 import com.instil.validators.FiveCardsValidator;
 import com.instil.validators.FiveCardsValidatorImpl;
@@ -24,15 +24,15 @@ public class PokerHandServiceImpl implements PokerHandService {
     private static Logger logger = Logger.getLogger(PokerHandServiceImpl.class);
 
     @Override
-    public Map<FiveCard, PokerHandEnum> processPokerHand(String fileName) {
+    public Map<FiveCard, PokerHandRankEnum> processPokerHand(String fileName) {
         FiveCardsValidator fiveCardsValidator = new FiveCardsValidatorImpl();
         List<String> rawFiveCards = readFiveCards(fileName);
         List<FiveCard> fiveCards = validate(fiveCardsValidator, rawFiveCards);
         return determineHandRank(fiveCards);
     }
 
-    private Map<FiveCard, PokerHandEnum> determineHandRank(List<FiveCard> fiveCards){
-        Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank = new HashedMap<>();
+    private Map<FiveCard, PokerHandRankEnum> determineHandRank(List<FiveCard> fiveCards){
+        Map<FiveCard, PokerHandRankEnum> mappedFiveCardWithHandRank = new HashedMap<>();
         HandRankService handRankService = new HandRankServiceImpl();
         for(FiveCard fiveCard : fiveCards){
             processFiveCards(mappedFiveCardWithHandRank, handRankService, fiveCard);
@@ -40,59 +40,59 @@ public class PokerHandServiceImpl implements PokerHandService {
         return mappedFiveCardWithHandRank;
     }
 
-    private void processFiveCards(Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
+    private void processFiveCards(Map<FiveCard, PokerHandRankEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isFullHouse(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FULL_HOUSE);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.FULL_HOUSE);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isFourOFAKind(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FOUR_OF_A_KIND);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.FOUR_OF_A_KIND);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isTwoPairs(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.TWO_PAIRS);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.TWO_PAIRS);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isThreeOfAKind(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.THREE_OF_A_KIND);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.THREE_OF_A_KIND);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isOnePair(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ONE_PAIR);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.ONE_PAIR);
             }
         }
         processMoreFiveCards(mappedFiveCardWithHandRank, handRankService, fiveCard);
     }
 
-    private void processMoreFiveCards(Map<FiveCard, PokerHandEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
+    private void processMoreFiveCards(Map<FiveCard, PokerHandRankEnum> mappedFiveCardWithHandRank, HandRankService handRankService, FiveCard fiveCard) {
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isStraightFlush(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT_FLUSH);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.STRAIGHT_FLUSH);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isRoyalFlush(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.ROYAL_FLUSH);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.ROYAL_FLUSH);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isFlush(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.FLUSH);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.FLUSH);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isStraight(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.STRAIGHT);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.STRAIGHT);
             }
         }
         if(mappedFiveCardWithHandRank.get(fiveCard)==null){
             if(handRankService.isHighCard(fiveCard)){
-                mappedFiveCardWithHandRank.put(fiveCard, PokerHandEnum.HIGH_CARD);
+                mappedFiveCardWithHandRank.put(fiveCard, PokerHandRankEnum.HIGH_CARD);
             }
         }
     }
