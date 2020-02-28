@@ -10,7 +10,8 @@
 ## Improvements that I can think of now
 1. #### Currently the application considers "A" as greater than "K". Further coding is needed to make the application consider "A" as 1 as well<BR>
 2. More validations like validate the Card and Suit
-3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative
+3. PokerHandServiceImpl.java processFiveCards and processMoreFiveCards methods are big and would love to come up with an alternative. Something like
+each Rank can be in a separate class and iterate over all the ranks.
 4. A highlevel class diagram
 5. More unit tests although I think the main core logics are tested.
 6. Add more loggings
