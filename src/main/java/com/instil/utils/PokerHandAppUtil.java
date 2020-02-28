@@ -1,6 +1,7 @@
 package com.instil.utils;
 
 import com.google.common.collect.ImmutableMap;
+import com.instil.constants.SuitEnum;
 import com.instil.models.Card;
 import com.instil.models.FiveCard;
 
@@ -20,7 +21,7 @@ public class PokerHandAppUtil {
         replaceToNumberValue(fiveCard.getCardFive());
     }
 
-    public static void replaceToNumberValue(Card card){
+    private static void replaceToNumberValue(Card card){
         if(cardValue.get(card.getName())!=null){
             card.setName(String.valueOf(cardValue.get(card.getName())));
         }
@@ -67,7 +68,7 @@ public class PokerHandAppUtil {
         return noOfIdenticalCardsCounter;
     }
 
-    public static void populateNoOFPairsCounter(Map<String, Integer> noOfIdenticalCardsCounter, String name){
+    private static void populateNoOFPairsCounter(Map<String, Integer> noOfIdenticalCardsCounter, String name){
         Integer count = noOfIdenticalCardsCounter.get(name);
         noOfIdenticalCardsCounter.put(name, (count==null)? 1 : count+1);
     }
@@ -101,6 +102,21 @@ public class PokerHandAppUtil {
 
     public static boolean isAllSameSuit(Map<String, Integer> noOfIdenticalSuitsCounter){
         return  isTheNumberOfPairFound(noOfIdenticalSuitsCounter, 5);
+    }
+
+
+    public static Card convertToCard(String rawCard) {
+        if(rawCard.length() > 2){
+            return new CardBuilder()
+                    .setName(String.valueOf(rawCard.charAt(0)) + String.valueOf(rawCard.charAt(1)))
+                    .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(2))))
+                    .build();
+        }
+        return new CardBuilder()
+                .setName(String.valueOf(rawCard.charAt(0)))
+                .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(1))))
+                .build();
+
     }
 
 }

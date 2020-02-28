@@ -7,16 +7,17 @@ import com.instil.utils.CardBuilder;
 import com.instil.utils.FiveCardBuilder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.instil.utils.PokerHandAppUtil.convertToCard;
 
 /**
  * Created by Hari Rao on 26/02/20.
  */
 public class FiveCardsValidatorImpl implements FiveCardsValidator {
     @Override
-    public List<FiveCard> validate(List<String> rawFiveCards) {
+    public List<FiveCard> validate(List<String> rawFiveCards){
         return validateIfTheyAreInPairs(rawFiveCards);
     }
 
@@ -46,17 +47,4 @@ public class FiveCardsValidatorImpl implements FiveCardsValidator {
         return fiveCards;
     }
 
-    private Card convertToCard(String rawCard) {
-        if(rawCard.length() > 2){
-            return new CardBuilder()
-                    .setName(String.valueOf(rawCard.charAt(0)) + String.valueOf(rawCard.charAt(1)))
-                    .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(2))))
-                    .build();
-        }
-        return new CardBuilder()
-                            .setName(String.valueOf(rawCard.charAt(0)))
-                            .setSuit(SuitEnum.valueOf(String.valueOf(rawCard.charAt(1))))
-                            .build();
-
-    }
 }
